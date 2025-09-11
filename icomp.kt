@@ -18,7 +18,7 @@ fun toOctal(decimal: Int): String{
 
     val octal = StringBuilder()
     
-    if (binary.length%3 == 1) binary = "00" + binary
+    if      (binary.length%3 == 1) binary = "00" + binary
     else if (binary.length%3 == 2) binary = "0" + binary
   
     var i = 3;
@@ -39,11 +39,44 @@ fun toOctal(decimal: Int): String{
 
      return octal.toString()
 
- }
+}
 
-//  fun toHexa(decimal: Int): String{
+fun toHexa(decimal: Int): String{
+    
+    var binary = toBinary(decimal)
+
+    val hexa = StringBuilder()
+    
+    if      (binary.length%3 == 1) binary = "000" + binary
+    else if (binary.length%3 == 2) binary = "00" + binary
+    else if (binary.length%3 == 3) binary = "0" + binary
   
-//  }
+    var i = 4;
+    var j = 0;
+
+    while (j<binary.length){
+  
+        var hexate = binary.substring(binary.length - i, binary.length - j).toInt()
+
+        if (hexate/1000 == 1){
+            hexate%=1000
+            
+            // get the substring in octal of the last 3
+            // add to the char 'A'
+
+
+            }
+        }
+
+
+        i+=4
+        j+=4
+
+     }
+
+     return hexa.toString()
+
+}
 
 //  fun onesComp(binary: String): String{
   
