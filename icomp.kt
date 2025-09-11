@@ -1,18 +1,29 @@
 fun toBinary(decimal: Int): String{
     
-    val binary: MutableList<Int> = mutableListOf()
+    val binary = StringBuilder()
 
     while (decimal > 0){
-        binary.add(decimal%2)
+        binary.append(decimal%2)
         decimal/=2
     }
 
-    return "turn the binary list into a string"
+    return binary.toString().reversed()
 
 }
 
 fun toOctal(binary: String): String{
-    // figure out if better to hard code or convert to int
+    
+    val octal = StringBuilder()
+    
+    if (binary.length%3 == 1) binary = "00" + binary
+    else if (binary.length%3 == 2) binary = "0" + binary
+    
+    var i = 3;
+    
+    val octate = binary.substring(binary.length - i, binary.length)
+    
+    
+
 }
 
 fun toHexa(binary: String): String{
