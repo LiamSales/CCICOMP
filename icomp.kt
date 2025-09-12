@@ -55,27 +55,27 @@ fun toHexa(decimal: Int): String{
     var j = 0;
 
     while (j<binary.length){
-  
+
+            // so 1000 is 8, 1001 is 9, 1010 is A
+
         var hexate = binary.substring(binary.length - i, binary.length - j).toInt()
 
-        if (hexate/1000 == 1){
-            hexate%=1000
-            
-            // get the substring in octal of the last 3
-            // add to the char 'A'
-
-
+            if (hexate/1000 == 1 && hexate%100 < 0){
+                hexate%=1000
+                var letter = 'A'
+                // assume the base case is 010
+                // subtract the last three original digits to the base case in binary
+                // add the difference to the base case
+                hexa.insert(0,letter)
+                }
+            else {
+                // ez same as octal except we gotta worry about 8 and 9
             }
         }
-
-
         i+=4
         j+=4
-
      }
-
      return hexa.toString()
-
 }
 
 //  fun onesComp(binary: String): String{
