@@ -63,13 +63,13 @@ fun toHexa(decimal: Int): String{
             if (hexate/1000 == 1 && hexate%100 < 0){
                 hexate%=1000
                 var letter = 'A'
-                // assume the base case is 010
-                // subtract the last three original digits to the base case in binary
-                // add the difference to the base case
+                letter += hexate //??
                 hexa.insert(0,letter)
                 }
             else {
-                // ez same as octal except we gotta worry about 8 and 9
+            val digits = List(hexate/1000,  , hexate%100/10, hexate%10)
+
+            octal.insert(0, *8 + *4 + *2 +)
             }
         }
         i+=4
@@ -78,13 +78,37 @@ fun toHexa(decimal: Int): String{
      return hexa.toString()
 }
 
-//  fun onesComp(binary: String): String{
-  
-//  }
+fun onesComp(binary: String): String{
 
-//  fun twosComp(binary: String): String{
-  
-//  }
+    val onescomp = StringBuilder()
+
+    var i=0
+
+    while(i<binary.length){
+
+//invert
+
+        i++
+    }
+
+    return onescomp.toString()
+}
+
+fun twosComp(binary: String): String{
+
+    val onescomp = StringBuilder()
+
+    var i=0
+
+    while(i<binary.length){
+
+     //wait for 1 then invert   
+
+        i++
+    }
+
+    return onescomp.toString()
+}
 
 fun main(){
 
