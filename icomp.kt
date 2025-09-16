@@ -3,31 +3,31 @@ fun toBinary(decimal: Int): String {
     val sb = StringBuilder()
     var n = decimal
     while (n > 0) {
-        sb.insert(0, (n and 1).toString()) // take last bit
-        n = n shr 1                        // shift right
+        sb.insert(0, (n and 1).toString()) // take last bit of the full decimal number n and 1 gets the last bit of N, because we do by the number of digits, completely reliant on n 
+        n = n shr 1                        // shifts all bits to the right by one place, so  ex: 1101 becomes 0110, this is actually binary dividing by 2 (floor division)
     }
-    return sb.toString()
+    return sb.toString() // already in binary, prev code had the operations done manually, but bitwise operators automate the process directly
 }
 
 fun toOctal(decimal: Int): String {
-    if (decimal == 0) return "0"
+    if (decimal == 0) return "0" 
     val sb = StringBuilder()
     var n = decimal
     while (n > 0) {
-        sb.insert(0, (n and 7).toString()) // last 3 bits → 0–7
-        n = n shr 3
+        sb.insert(0, (n and 7).toString()) // gets n and 111, last 3 digits then copies, we can extract this by using and then the binary number (2^x - 1)
+        n = n shr 3 //same as above, move the 3 digits, this is dividing by 8
     }
-    return sb.toString()
+    return sb.toString() // yea and already does the thing in decimal so its dec>bin internally> dec
 }
 
 fun toHexa(decimal: Int): String {
     if (decimal == 0) return "0"
-    val hexChars = "0123456789ABCDEF"
+    val hexChars = "0123456789ABCDEF" // reference, basically a macro?
     val sb = StringBuilder()
     var n = decimal
     while (n > 0) {
         val digit = n and 15               // last 4 bits (0–15)
-        sb.insert(0, hexChars[digit])
+        sb.insert(0, hexChars[digit]) //basically maps from our macro, ez
         n = n shr 4
     }
     return sb.toString()
@@ -35,16 +35,16 @@ fun toHexa(decimal: Int): String {
 
 fun onesComp(binary: String): String {
     val sb = StringBuilder()
-    for (c in binary) {
-        sb.append(if (c == '0') '1' else '0')
+    for (c in binary) { // goes through every character in the binary
+        sb.append(if (c == '0') '1' else '0') //bit flip so if c0, then 1, if c1 then 0, then hyst rebuilds the string
     }
     return sb.toString()
 }
 
-fun twosComp(binary: String): String {
-    val sb = StringBuilder(binary)
-    var carry = true
-    for (i in sb.length - 1 downTo 0) {
+fun twosComp(binary: String): String { //ones comp +1
+    val sb = StringBuilder(binary) //take note the sb has an argument now, it contains the binary
+    var carry = true // do i still need to add 1 to the next higher bit?
+    for (i in sb.length - 1 downTo 0) { // will continue study tomorrow but this is the last one
         if (carry) {
             if (sb[i] == '0') {
                 sb.setCharAt(i, '1')
