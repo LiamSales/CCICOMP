@@ -99,3 +99,5 @@ fun main() {
     }
 }
 
+// to do: refactor entire code to do 5 arithmetic operations on each base
+// single and double precision conversion
